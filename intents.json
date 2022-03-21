@@ -1,0 +1,81 @@
+{
+    "intents": [
+        {
+            "tag": "greetings",
+            "priority": 1,
+            "action": false,
+            "patterns": [
+                "hello",
+                "goodmorning",
+                "good morning"
+            ],
+            "responses": {
+                "high": [],
+                "neutral": [],
+                "low": []
+            }
+        },
+        {
+            "tag": "music",
+            "priority": 5,
+            "action": true,
+            "patterns": [
+                "play"
+            ]
+        },
+        {
+            "tag": "remind",
+            "priority": 5,
+            "action": true,
+            "patterns": [
+                "remind"
+            ]
+        },
+        {
+            "tag": "open",
+            "priority": 5,
+            "action": true,
+            "patterns": [
+                "open"
+            ]
+        },{
+            "tag": "and",
+            "priority": 10,
+            "action": true,
+            "patterns": [
+                "and","also"
+            ]
+        }
+    ],
+    "pred": {
+        "positivity": {
+            "pos": [
+                "good",
+                "great",
+                "happy"
+            ],
+            "neg": [
+                "ugly",
+                "annoying",
+                "hate"
+            ]
+        }
+    },
+    "nicknames": {
+        "high": [
+            "grant-chan",
+            "onii-chan"
+        ],
+        "neutral": [
+            "grant",
+            "senpai",
+            "senpai-kun"
+        ],
+        "low": [
+            "hentai",
+            "meanie",
+            "baka",
+            "dumbass"
+        ]
+    }
+}
