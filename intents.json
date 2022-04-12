@@ -24,6 +24,14 @@
             ]
         },
         {
+            "tag": "stream",
+            "priority": 5,
+            "action": true,
+            "patterns": [
+                "stream"
+            ]
+        },
+        {
             "tag": "remind",
             "priority": 5,
             "action": true,

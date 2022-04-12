@@ -7,9 +7,10 @@ const path = require('path');
 const schedule = require('node-schedule');
 var ws = require('windows-shortcuts');
 const lib = require("./actions.js")
+const   exec   = require('child_process').exec;
 //
 
-function action(input){
+ function action(input){
     for(let tag of input.tags){
         if(tag.action){
             switch(tag.tag){
@@ -22,6 +23,18 @@ function action(input){
                 break;
                 case'open':
                 lib.open(input, tag)
+                break;
+                case'stream':
+                //console.log(input.msg.split(tag.call)[1])
+               let t = input.msg.split(tag.call)[1]
+               console.log(`running: youtube-dl -o - "ytsearch:${t}" | mpv -`)
+               exec(`youtube-dl -o - "ytsearch:${t}" | mpv -`, function (error, stdout, stderr) {
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                }
+                // Validate stdout / stderr to see if service is already running
+                // perhaps.
+            });
                 break;
             }
         }
