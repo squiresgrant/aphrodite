@@ -32,6 +32,14 @@
             ]
         },
         {
+            "tag": "download",
+            "priority": 5,
+            "action": true,
+            "patterns": [
+                "download"
+            ]
+        },
+        {
             "tag": "remind",
             "priority": 5,
             "action": true,

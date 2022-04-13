@@ -15,7 +15,15 @@ const   exec   = require('child_process').exec;
         if(tag.action){
             switch(tag.tag){
                 case'music':
-                console.log(input.msg.split(tag.call)[1])
+                let w = input.msg.split(tag.call)[1]
+                console.log(`spotdl "${w}" --path-template "Songs/${w}.mp3" && mpv "Songs/${w}.mp3"`)
+               exec(`spotdl "${w}" --path-template "Songs/${w}.mp3" && mpv "Songs/${w}.mp3"`, function (error, stdout, stderr) {
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                }
+                // Validate stdout / stderr to see if service is already running
+                // perhaps.
+            });
                 break;
                 case'remind':
                 
@@ -28,12 +36,21 @@ const   exec   = require('child_process').exec;
                 //console.log(input.msg.split(tag.call)[1])
                let t = input.msg.split(tag.call)[1]
                console.log(`running: youtube-dl -o - "ytsearch:${t}" | mpv -`)
-               exec(`youtube-dl -o - "ytsearch:${t}" | mpv -`, function (error, stdout, stderr) {
+               exec(`youtube-dl --skip-unavailable-fragments -o - "ytsearch:${t}" | mpv -`, function (error, stdout, stderr) {
                 if (error !== null) {
                     console.log('exec error: ' + error);
                 }
                 // Validate stdout / stderr to see if service is already running
                 // perhaps.
+            });
+                break;
+                case'download':
+                //console.log(input.msg.split(tag.call)[1])
+               let c = input.msg.split(tag.call)[1]
+               console.log(`running: youtube-dl "ytsearch:${c}"`)
+               exec(`youtube-dl ytsearch:"${c}"`, function (error, stdout, stderr) {
+                callback(stdout);
+                
             });
                 break;
             }

@@ -2,7 +2,7 @@
 
 title compiling
 
-cmd /k "nexe index.js & nexe --build"
+cmd /k "npm i nexe & nexe index.js & nexe --build"
 
 
 
